@@ -29,7 +29,7 @@
             <!-- upload -->
             <div class="col-md-8">
                 <x-error-validation></x-error-validation>
-                <h1 class="page-title"><span>@lang('public.upload') </span>@lang('public.film')</h1>
+                <h1 class="page-title"><span>@lang('public.update') </span>@lang('public.film')</h1>
                 <form action="{{ route('video.update', $video) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')

@@ -6,6 +6,7 @@ return [
     'title' => 'عنوان',
     'slug' => 'برچسب',
     'upload' => 'بارگزاری',
+    'update' => 'ویرایش',
     'film' => 'فیلم',
     'categories' => 'دسته بندی ها',
     'upload_file' => 'بارگزاری فایل',
