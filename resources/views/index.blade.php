@@ -2,7 +2,8 @@
 
 @section('content')
     <div id="all-output" class="col-md-12">
-        <h1 class="new-video-title"><i class="fa fa-bolt"></i> آخرین ویدیو‌ها</h1>
+        <x-alert></x-alert>
+        <h1 class="new-video-title"><i class="fa fa-film"></i> آخرین ویدیو‌ها</h1>
         <div class="row">
 
             <!-- video-item -->
@@ -13,7 +14,7 @@
 
         </div>
 
-        <h1 class="new-video-title"><i class="fa fa-bolt"></i> پربازدیدترین ویدیوها</h1>
+        <h1 class="new-video-title"><i class="fa fa-film"></i> پربازدیدترین ویدیوها</h1>
         <div class="row">
 
             <!-- video-item -->
@@ -24,7 +25,7 @@
 
         </div>
 
-        <h1 class="new-video-title"><i class="fa fa-bolt"></i> محبوب‌ترین‌ها</h1>
+        <h1 class="new-video-title"><i class="fa fa-film"></i> محبوب‌ترین‌ها</h1>
         <div class="row">
 
             <!-- video-item -->

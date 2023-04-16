@@ -6,7 +6,7 @@ use App\Models\Category;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
@@ -24,7 +24,10 @@ class Video extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function relatedVideos(int $count)
+    {
+        return $this->category->getRandomVideo($count, $this->id);
+    }
     public function getDurationToHumanAttribute()
     {
         return gmdate('i:s', (int) $this->duration);
@@ -33,12 +36,19 @@ class Video extends Model
     {
         return (new Verta($value))->formatDifference();
     }
-    public function getThumbnailInHumanAttribute()
+    public function getVideoThumbnailInHumanAttribute()
     {
         return "/storage/thumbnail/$this->thumbnail";
     }
-    public function getPathInHumanAttribute()
+    public function getVideoPathInHumanAttribute()
     {
         return "/storage/$this->path";
+    }
+    public function delete()
+    {
+        dd("storage/app/private/thumbnail/$this->thumbnail");
+        Storage::delete("storage/app/private/$this->path");
+        Storage::delete("storage/app/private/thumbnail/$this->thumbnail");
+        parent::delete();
     }
 }

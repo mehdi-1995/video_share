@@ -31,4 +31,8 @@ Route::get('categories/{category:slug}/videos', [CategoryController::class, 'ind
 Route::prefix('videos')->group(function () {
     Route::get('create', [VideoController::class, 'create'])->name('videos.create');
     Route::post('', [VideoController::class, 'store'])->name('videos.store');
+    Route::get('{video}/edit', [VideoController::class, 'edit'])->name('video.edit');
+    Route::put('{video}', [VideoController::class, 'update'])->name('video.update');
+    Route::get('{video}/show', [VideoController::class, 'show'])->name('video.show');
+    Route::get('{video}/delete', [VideoController::class, 'destroy'])->name('video.delete');
 });

@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="all-output" class="col-md-12">
-        <h1 class="new-video-title"><i class="fa fa-bolt"></i>{{ $name }}</h1>
+        <h1 class="new-video-title"><i class="fa fa-film"></i>{{ $name }}</h1>
         <div class="row">
 
             <!-- video-item -->
