@@ -10,6 +10,7 @@ return [
     'you must verified email' => 'ایمیل شما تایید نشده است. لطفا برای بهرمندی از امکانات سایت لطفا ایمیل خود را تایید کنید',
     'Resend email' => 'ارسال مجدد ایمیل',
     'verification-link-sent' => 'لینک تایید با موفقیت ارسال شد',
+    'There was an error sending the link!' => ' ارسال لینک با خطایی مواجه شده!',
     'your-email-was-verified' => 'لینک تایید با موفقیت ارسال شد',
     'Thanks for your registration, a confirmation email has been sent to you, you must confirm your email to use all the features of the site.' => 'با تشکر از ثبت نام شما، یک ایمیل تایید برای شما ارسال شده است، برای استفاده از تمامی امکانات سایت باید ایمیل خود را تایید کنید.',
 ];

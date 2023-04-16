@@ -6,6 +6,7 @@ return [
     'name' => 'نام',
     'email' => 'ایمیل',
     'password' => 'رمز عبور',
+    'password_confirmation' => 'تاییدیه رمز عبور',
     'register' => 'ثبت نام',
     'remember me' => 'مرا به خاطر بسپار',
     'register user' => 'ثبت نام کاربر',
@@ -26,4 +27,8 @@ return [
     'magic link' => 'ورود با لینک جادویی',
     'magic link sent' => 'لینک جادویی برای شما ارسال شد',
     'invalidToken' => 'لینک ورود معتبر نمیباشد',
+    'Forgot your password?' => 'رمز عبور خود را فراموش کرده اید؟',
+    'Dont you have an account?' => 'حساب کاربری ندارید؟',
+    'failed' => 'این اعتبارنامه ها با سوابق ما مطابقت ندارد.',
+    'A new verification link has been sent to the email address you provided during registration.' => 'لینک تایید ایمیل برای شما ارسال شد',
 ];

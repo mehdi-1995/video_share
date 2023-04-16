@@ -12,4 +12,5 @@ return [
     'upload_file' => 'بارگزاری فایل',
     'description' => 'توضیحات',
     'store' => 'ذخیره',
+    'verify_email' => 'تاییدیه ایمیل',
 ];
