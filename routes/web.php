@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VideoController;
 
 /*
@@ -36,3 +37,5 @@ Route::prefix('videos')->group(function () {
     Route::get('{video}/show', [VideoController::class, 'show'])->name('video.show');
     Route::get('{video}/delete', [VideoController::class, 'destroy'])->name('video.delete');
 });
+
+Route::post('videos/{video}/comment', [CommentController::class, 'create'])->name('videos.comment.create');
