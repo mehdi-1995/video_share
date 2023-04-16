@@ -12,6 +12,10 @@ class Video extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title', 'description', 'category_id', 'slug', 'path', 'thumbnail', 'user_id', 'duration'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -28,5 +32,13 @@ class Video extends Model
     public function getCreatedAtToHumanAttribute($value)
     {
         return (new Verta($value))->formatDifference();
+    }
+    public function getThumbnailInHumanAttribute()
+    {
+        return "/storage/thumbnail/$this->thumbnail";
+    }
+    public function getPathInHumanAttribute()
+    {
+        return "/storage/$this->path";
     }
 }

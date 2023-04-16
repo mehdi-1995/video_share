@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('categories/{category:slug}/videos', [CategoryController::class, 'index'])->name('category.videos');
+Route::prefix('videos')->group(function () {
+    Route::get('create', [VideoController::class, 'create'])->name('videos.create');
+    Route::post('', [VideoController::class, 'store'])->name('videos.store');
+});

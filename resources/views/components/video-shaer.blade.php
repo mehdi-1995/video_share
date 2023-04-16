@@ -3,7 +3,7 @@
         <div class="thumb">
             <div class="hover-efect"></div>
             <small class="time">{{ $video->duration_to_human }}</small>
-            <a href="#"><img src="{{ $video->thumbnail }}" alt=""></a>
+            <a href="#"><img src="{{ $video->thumbnail_in_human }}" alt=""></a>
         </div>
         <div class="video-info">
             <a href="#" class="title">{{ $video->title }}</a>
