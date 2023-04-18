@@ -5,18 +5,22 @@ namespace App\Models;
 use App\Models\Comment;
 use App\Models\Category;
 use Hekmatinasser\Verta\Verta;
+use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends Model
 {
-    use HasFactory;
+    use HasFactory, Likeable;
 
     protected $fillable = [
         'title', 'description', 'category_id', 'slug', 'path', 'thumbnail', 'user_id', 'duration'
     ];
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -36,6 +36,7 @@ class VideoController extends Controller
     }
     public function show(Video $video)
     {
+        $video = $video->load('comments.user');
         return view('videos.show', compact('video'));
     }
     public function destroy(Video $video)
