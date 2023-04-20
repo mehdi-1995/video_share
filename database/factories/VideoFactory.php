@@ -26,7 +26,7 @@ class VideoFactory extends Factory
             'duration' => fake()->time(),
             'description' => fake()->realText(),
             'user_id' => User::first() ?? User::factory(),
-            'category_id' => Category::first() ?? Category::factory(),
+            'category_id' => Category::first(),
         ];
     }
 }

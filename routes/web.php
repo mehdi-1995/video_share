@@ -8,7 +8,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryVideoController;
 
 
 Route::middleware('auth')->group(function () {
@@ -20,16 +20,24 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('categories/{category:slug}/videos', [CategoryController::class, 'index'])->name('category.videos');
+
+Route::get('categories/{category:slug}/videos', [CategoryVideoController::class, 'index'])->name('category.videos');
+
 Route::prefix('videos')->group(function () {
-    Route::get('create', [VideoController::class, 'create'])->name('videos.create');
-    Route::post('', [VideoController::class, 'store'])->name('videos.store');
-    Route::get('{video}/edit', [VideoController::class, 'edit'])->name('video.edit');
-    Route::put('{video}', [VideoController::class, 'update'])->name('video.update');
+
     Route::get('{video}/show', [VideoController::class, 'show'])->name('video.show');
-    Route::get('{video}/delete', [VideoController::class, 'destroy'])->name('video.delete');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('create', [VideoController::class, 'create'])->name('videos.create');
+        Route::post('', [VideoController::class, 'store'])->name('videos.store');
+        Route::get('{video}/edit', [VideoController::class, 'edit'])->name('video.edit');
+        Route::put('{video}', [VideoController::class, 'update'])->name('video.update');
+        Route::get('{video}/delete', [VideoController::class, 'destroy'])->name('video.delete');
+        Route::post('{video}/comment', [CommentController::class, 'create'])->name('videos.comment.create');
+    });
 });
 
-Route::post('videos/{video}/comment', [CommentController::class, 'create'])->name('videos.comment.create');
-Route::get('{likeable_type}/{likeable_id}/like', [LikeController::class, 'create'])->name('like.create');
-Route::get('{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'create'])->name('dislike.create');
+Route::middleware('auth')->group(function () {
+    Route::get('{likeable_type}/{likeable_id}/like', [LikeController::class, 'create'])->name('like.create');
+    Route::get('{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'create'])->name('dislike.create');
+});

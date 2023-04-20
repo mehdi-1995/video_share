@@ -66,21 +66,29 @@ trait Likeable
     }
     public function getLikeCountAttribute()
     {
-        $CacheKeyName = $this->getCacheLike();
-        return Cache::remember($CacheKeyName, 360, function () {
-            return $this->likes()
+        // $CacheKeyName = $this->getCacheLike();
+        // return Cache::remember($CacheKeyName, 360, function () {
+        //     return $this->likes()
+        //         ->where('vote', 1)
+        //         ->count();
+        // });
+
+        return $this->likes()
                 ->where('vote', 1)
                 ->count();
-        });
     }
     public function getDislikeCountAttribute()
     {
-        $CacheKeyName = $this->getCacheDislike();
-        return Cache::remember($CacheKeyName, 360, function () {
-            return $this->likes()
+        // $CacheKeyName = $this->getCacheDislike();
+        // return Cache::remember($CacheKeyName, 360, function () {
+        //     return $this->likes()
+        //         ->where('vote', -1)
+        //         ->count();
+        // });
+
+        return $this->likes()
                 ->where('vote', -1)
                 ->count();
-        });
     }
 
     public function getCacheLike()

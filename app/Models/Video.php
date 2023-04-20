@@ -4,10 +4,13 @@ namespace App\Models;
 
 use App\Models\Comment;
 use App\Models\Category;
+use App\Filter\VideoFilter;
 use Hekmatinasser\Verta\Verta;
 use App\Models\Traits\Likeable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends Model
@@ -59,5 +62,9 @@ class Video extends Model
         Storage::delete("storage/app/private/$this->path");
         Storage::delete("storage/app/private/thumbnail/$this->thumbnail");
         parent::delete();
+    }
+    public function scopeFilter(Builder $builder, array $param)
+    {
+        (new VideoFilter($builder))->apply($param);
     }
 }

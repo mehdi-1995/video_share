@@ -44,8 +44,8 @@
                 </div><!-- // col-md-2 -->
                 <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs hidden-sm">
                     <div class="search-form">
-                        <form id="search" action="#" method="post">
-                            <input type="text" placeholder="جستجو ..." />
+                        <form id="search" action="#" method="get">
+                            <input value="{{ request()->query('q') }}" name="q" type="text" placeholder="جستجو ..." />
                             <input type="submit" value="Keywords" />
                         </form>
                     </div>
@@ -66,7 +66,8 @@
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu account-menu">
-                                <li><a href="{{ route('verification.notice') }}"><i class="fa fa-address-book color-2"></i>@lang('public.verify_email')</a></li>
+                                <li><a href="{{ route('verification.notice') }}"><i
+                                            class="fa fa-address-book color-2"></i>@lang('public.verify_email')</a></li>
                                 <li><a href="#"><i class="fa fa-edit color-1"></i>ویرایش پروفایل</a></li>
                                 <li><a href="{{ route('videos.create') }}"><i class="fa fa-video-camera color-2"></i>اضافه
                                         کردن فیلم</a></li>

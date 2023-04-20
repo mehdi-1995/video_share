@@ -8,18 +8,24 @@
                 <div class="form-group col-md-3">
                     <label for="inputCity">ترتیب براساس</label>
                     <select name="sortBy" class="form-control">
-                        <option value="like" محبوبیت</option>
-                        <option value="duration" مدت زمان</option>
-                        <option value="created_at" جدیدترین</option>
+                        <option {{ request()->query('sortBy') == 'like' ? 'selected' : '' }} value="like">
+                            محبوبیت</option>
+                        <option {{ request()->query('sortBy') == 'duration' ? 'selected' : '' }} value="duration">
+                            مدت زمان</option>
+                        <option {{ request()->query('sortBy') == 'created_at' ? 'selected' : '' }} value="created_at">
+                            جدیدترین</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputCity">مدت زمان</label>
                     <select name="length" id="inputState" class="form-control">
-                        <option value="0" همه</option>
-                        <option value="1" کمتر از یک دقیقه</option>
-                        <option value="2" 1 تا 5 دقیقه</option>
-                        <option value="3" بیشتر از 5 دقیقه</option>
+                        <option value="0"> همه</option>
+                        <option {{ request()->query('length') == 1 ? 'selected' : '' }} value="1"> کمتر از یک دقیقه
+                        </option>
+                        <option {{ request()->query('length') == 2 ? 'selected' : '' }} value="2"> 1 تا 5 دقیقه
+                        </option>
+                        <option {{ request()->query('length') == 3 ? 'selected' : '' }} value="3"> بیشتر از 5 دقیقه
+                        </option>
                     </select>
                 </div>
                 <input type="hidden" name="q" value="{{ request()->query('q') }}">
@@ -37,6 +43,9 @@
             @endforeach
             <!-- video-item -->
 
+            <div dir='ltr' style="text-align: center">
+                {{ $videos->links() }}
+            </div>
         </div>
     </div><!-- // row -->
 @endsection
