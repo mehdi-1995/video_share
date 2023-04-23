@@ -12,8 +12,8 @@ class LikeObserver
      */
     public function created(Like $like): void
     {
-        Cache::forget($like->likeable->getCacheLike());
-        Cache::forget($like->likeable->getCacheDislike());
+        Cache::forget($like->likeable->getCacheLikeAttribute());
+        Cache::forget($like->likeable->getCacheDislikeAttribute());
     }
 
     /**

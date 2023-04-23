@@ -104,13 +104,14 @@
 
                     </ul>
 
-
+                    @can('create',['App\\Models\Comment',$video])
                     <h3 class="post-box-title">ارسال نظرات</h3>
                     <form action="{{ route('videos.comment.create', $video) }}" method="post">
                         @csrf
                         <textarea name="body" class="form-control" rows="8" id="Message" placeholder="پیام"></textarea>
                         <button type="submit" id="contact_submit" class="btn btn-dm">ارسال پیام</button>
                     </form>
+                    @endcan
                 </div>
                 <!-- // Comments -->
 

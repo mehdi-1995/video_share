@@ -66,7 +66,7 @@ trait Likeable
     }
     public function getLikeCountAttribute()
     {
-        // $CacheKeyName = $this->getCacheLike();
+        // $CacheKeyName = $this->getCacheLikeAttribute();
         // return Cache::remember($CacheKeyName, 360, function () {
         //     return $this->likes()
         //         ->where('vote', 1)
@@ -79,7 +79,7 @@ trait Likeable
     }
     public function getDislikeCountAttribute()
     {
-        // $CacheKeyName = $this->getCacheDislike();
+        // $CacheKeyName = $this->getCacheDislikeAttribute();
         // return Cache::remember($CacheKeyName, 360, function () {
         //     return $this->likes()
         //         ->where('vote', -1)
@@ -91,11 +91,11 @@ trait Likeable
                 ->count();
     }
 
-    public function getCacheLike()
+    public function getCacheLikeAttribute()
     {
         return 'like_count_for_' . class_basename($this) . '_' . $this->id;
     }
-    public function getCacheDislike()
+    public function getCacheDislikeAttribute()
     {
         return 'dislike_count_for_' . class_basename($this) . '_' . $this->id;
     }

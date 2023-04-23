@@ -26,6 +26,7 @@ class VideoController extends Controller
     }
     public function edit(Video $video)
     {
+        $this->authorize('update', $video);
         $categories = Category::all();
         return view('videos.edit', compact('video', 'categories'));
     }
@@ -41,6 +42,7 @@ class VideoController extends Controller
     }
     public function destroy(Video $video)
     {
+        $this->authorize('delete', $video);
         $video->delete();
         return back();
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
