@@ -12,14 +12,34 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Video extends Model
 {
-    use HasFactory, Likeable;
+    use HasFactory, Likeable, SoftDeletes;
 
     protected $fillable = [
         'title', 'description', 'category_id', 'slug', 'path', 'thumbnail', 'user_id', 'duration'
     ];
+
+    protected $hidden = [
+        'VideoPathInHuman'
+    ];
+
+    protected $visible = [
+        // 'path', 'thumbnail'
+    ];
+
+    protected $appends = [
+        'soft_developer_engin',
+        'SoftDeveloperEngin',
+    ];
+
+    public function getSoftDeveloperEnginAttribute()
+    {
+        return 'mahdi';
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -56,13 +76,12 @@ class Video extends Model
     {
         return "/storage/$this->path";
     }
-    public function delete()
-    {
-        dd("storage/app/private/thumbnail/$this->thumbnail");
-        Storage::delete("storage/app/private/$this->path");
-        Storage::delete("storage/app/private/thumbnail/$this->thumbnail");
-        parent::delete();
-    }
+    // public function delete()
+    // {
+    //     Storage::delete($this->getOriginal('path'));
+    //     Storage::delete('thumbnail/' . $this->getOriginal('thumbnail'));
+    //     parent::delete();
+    // }
     public function scopeFilter(Builder $builder, array $param)
     {
         (new VideoFilter($builder))->apply($param);
